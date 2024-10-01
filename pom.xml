@@ -6,7 +6,7 @@
 
     <groupId>dev.edgetom</groupId>
     <artifactId>iteminteractions</artifactId>
-    <version>0.1.0-RELEASE</version>
+    <version>0.1.0</version>
 
     <!--  Parts of this file were taken and modified from https://github.com/SkytAsul/GlowingEntities/blob/master/pom.xml -->
 
