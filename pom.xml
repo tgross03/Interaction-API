@@ -31,8 +31,8 @@
 
     <distributionManagement>
         <repository>
-            <id>github</id>
-            <name>GitHub Packages</name>
+            <id>iteminteractions</id>
+            <name>GitHub tgross03 Apache Maven Packages</name>
             <url>https://maven.pkg.github.com/tgross03/ItemInteractions</url>
         </repository>
     </distributionManagement>
