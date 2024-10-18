@@ -5,14 +5,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>dev.edgetom</groupId>
-    <artifactId>iteminteractions</artifactId>
+    <artifactId>interactions-api</artifactId>
     <version>0.1.0</version>
 
     <!--  Parts of this file were taken and modified from https://github.com/SkytAsul/GlowingEntities/blob/master/pom.xml -->
 
-    <name>ItemInteractions</name>
+    <name>Interaction-API</name>
     <description>A Spigot API for managing interactions with items.</description>
-    <url>https://github.com/tgross03/ItemInteractions</url>
+    <url>https://github.com/tgross03/Interaction-API</url>
 
     <licenses>
         <license>
@@ -33,14 +33,14 @@
         <repository>
             <id>github</id>
             <name>GitHub tgross03 Apache Maven Packages</name>
-            <url>https://maven.pkg.github.com/tgross03/ItemInteractions</url>
+            <url>https://maven.pkg.github.com/tgross03/Interaction-API</url>
         </repository>
     </distributionManagement>
 
     <scm>
-        <connection>scm:git:git://github.com/tgross03/ItemInteractions.git</connection>
-        <developerConnection>scm:git:ssh://github.com:tgross03/ItemInteractions.git</developerConnection>
-        <url>https://github.com/tgross03/ItemInteractions/tree/main</url>
+        <connection>scm:git:git://github.com/tgross03/Interaction-API.git</connection>
+        <developerConnection>scm:git:ssh://github.com:tgross03/Interaction-API.git</developerConnection>
+        <url>https://github.com/tgross03/Interactions-API/tree/main</url>
     </scm>
 
     <properties>
