@@ -11,7 +11,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
 import org.jetbrains.annotations.NotNull;
 
-
 /**
  * <pre>
  * An {@link InteractionExecutor} can be used to intercept an interaction of a
@@ -117,7 +116,7 @@ public abstract class InteractionExecutor {
      *                           If set to false the cooldown has to applied by using the {@link #addCooldown(Player, Material)} method
      * @param actionClass        The {@link ActionClass} that categorizes the {@link Action}s which should trigger the executor.
      */
-    public InteractionExecutor(@NotNull InteractionManager interactionManager, String interactionKey, boolean placeable, int cooldown,
+    public InteractionExecutor(@NotNull InteractionManager interactionManager, @NotNull String interactionKey, boolean placeable, int cooldown,
                                boolean cooldownInstant, ActionClass actionClass) {
         this(interactionManager, interactionKey, placeable, cooldown, cooldownInstant, actionClass.getActions());
     }
@@ -133,7 +132,7 @@ public abstract class InteractionExecutor {
      *                           If set to false the cooldown has to applied by using the {@link #addCooldown(Player, Material)} method
      * @param actions            The {@link Action}s that should trigger the executor.
      */
-    public InteractionExecutor(@NotNull InteractionManager interactionManager, String interactionKey, boolean placeable, Action... actions) {
+    public InteractionExecutor(@NotNull InteractionManager interactionManager, @NotNull String interactionKey, boolean placeable, Action... actions) {
         this(interactionManager, interactionKey, placeable, 0, false, actions);
     }
 
@@ -149,7 +148,7 @@ public abstract class InteractionExecutor {
      *                           If set to false the cooldown has to applied by using the {@link #addCooldown(Player, Material)} method
      * @param actionClass        The {@link ActionClass} that categorizes the {@link Action}s which should trigger the executor.
      */
-    public InteractionExecutor(@NotNull InteractionManager interactionManager, String interactionKey, boolean placeable, ActionClass actionClass) {
+    public InteractionExecutor(@NotNull InteractionManager interactionManager, @NotNull String interactionKey, boolean placeable, ActionClass actionClass) {
         this(interactionManager, interactionKey, placeable, 0, false, actionClass);
     }
 
@@ -163,8 +162,8 @@ public abstract class InteractionExecutor {
     public abstract void execute(PlayerInteractEvent event, Player player);
 
     /**
-     * Remove the {@link #interactionKey} from the {@link org.bukkit.persistence.PersistentDataContainer}
-     * of the given item. This removes every entry with the same {@link org.bukkit.NamespacedKey}.
+     * Adds the {@link #interactionKey} to the {@link org.bukkit.persistence.PersistentDataContainer}
+     * of the given item.
      *
      * @param itemStack The item the key should be added to.
      * @return The modified item without the entry in the {@link org.bukkit.persistence.PersistentDataContainer}.
@@ -177,7 +176,8 @@ public abstract class InteractionExecutor {
         ItemMeta itemMeta = itemStack.getItemMeta();
         assert itemMeta != null;
 
-        itemMeta.getPersistentDataContainer().remove(this.interactionManager.getPersistentDataContainerKey());
+        itemMeta.getPersistentDataContainer().set(this.interactionManager.getPersistentDataContainerKey(),
+                PersistentDataType.STRING, this.interactionKey);
         itemStack.setItemMeta(itemMeta);
 
         return itemStack;
@@ -185,8 +185,8 @@ public abstract class InteractionExecutor {
     }
 
     /**
-     * Removes the {@link #interactionKey} to the {@link org.bukkit.persistence.PersistentDataContainer}
-     * of the given item.
+     * Remove the {@link #interactionKey} from the {@link org.bukkit.persistence.PersistentDataContainer}of the given item.
+     * This removes every entry with the same {@link org.bukkit.NamespacedKey}.
      *
      * @param itemStack The item the key should be added to.
      * @return The modified item containing the entry in the {@link org.bukkit.persistence.PersistentDataContainer}.
@@ -199,8 +199,7 @@ public abstract class InteractionExecutor {
         ItemMeta itemMeta = itemStack.getItemMeta();
         assert itemMeta != null;
 
-        itemMeta.getPersistentDataContainer().set(this.interactionManager.getPersistentDataContainerKey(),
-                PersistentDataType.STRING, this.interactionKey);
+        itemMeta.getPersistentDataContainer().remove(this.interactionManager.getPersistentDataContainerKey());
         itemStack.setItemMeta(itemMeta);
 
         return itemStack;

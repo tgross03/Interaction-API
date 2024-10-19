@@ -33,6 +33,7 @@ public class InteractionManager {
     public InteractionManager(Plugin plugin) {
         this.persistentDataContainerKey = new NamespacedKey(plugin, UUID.randomUUID().toString().toLowerCase());
         this.interactions = new HashMap<>();
+        plugin.getServer().getPluginManager().registerEvents(new InteractionListener(this), plugin);
     }
 
     /**
