@@ -37,15 +37,12 @@
         </repository>
     </distributionManagement>
 
-    <scm>
-        <connection>scm:git:git://github.com/tgross03/Interaction-API.git</connection>
-        <developerConnection>scm:git:ssh://github.com:tgross03/Interaction-API.git</developerConnection>
-        <url>https://github.com/tgross03/Interaction-API/tree/main</url>
-    </scm>
-
     <properties>
         <java.version>1.8</java.version>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.mainpath>de.faidhd.modularbot.Main</project.mainpath>
     </properties>
 
     <build>
