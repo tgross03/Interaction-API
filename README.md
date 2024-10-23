@@ -27,7 +27,7 @@ For that you have to include the following entry in your `pom.xml` in the surrou
 Replace the placeholder `VERSION` with the version you want to use. You can find the all versions of
 the API in the [Maven Central Repository](https://central.sonatype.com/artifact/dev.edgetom/interaction-api).
 
-## Gradle
+### Gradle
 
 Alternatively you can include the API via Gradle:
 
