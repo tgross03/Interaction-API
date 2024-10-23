@@ -4,7 +4,7 @@ name: Maven Publish
 
 on:
   release:
-    types: [ created ]
+    types: [created]
 
 jobs:
   build:
@@ -31,9 +31,7 @@ jobs:
         run: mvn -B package --file pom.xml
 
       - name: Publish to Maven Central
-        run: |
-          export GPG_TTY=`tty`
-          mvn deploy
+        run: mvn deploy
         env:
           CENTRAL_USERNAME: ${{ secrets.CENTRAL_USERNAME }}
           CENTRAL_PASSWORD: ${{ secrets.CENTRAL_TOKEN }}
