@@ -32,7 +32,7 @@ jobs:
 
       - name: Publish to Maven Central
         run: |
-          mvn deploy -X
+          mvn deploy -X -Dgpg.executable=gpg -Dgpg.passphrase=${{ secrets.GPG_PASSPHRASE }} -Dgpg.batch=true
         env:
           CENTRAL_USERNAME: ${{ secrets.CENTRAL_USERNAME }}
           CENTRAL_PASSWORD: ${{ secrets.CENTRAL_TOKEN }}
