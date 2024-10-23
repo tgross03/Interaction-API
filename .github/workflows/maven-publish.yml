@@ -32,7 +32,6 @@ jobs:
 
       - name: Publish to Maven Central
         run: |
-          export GPG_TTY=`tty`
           mvn deploy -X
         env:
           CENTRAL_USERNAME: ${{ secrets.CENTRAL_USERNAME }}
