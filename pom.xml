@@ -87,6 +87,14 @@
                         </goals>
                     </execution>
                 </executions>
+                <configuration>
+                    <gpgArguments>
+                        <arg>--batch</arg>
+                        <arg>--pinentry-mode</arg>
+                        <arg>loopback</arg>
+                    </gpgArguments>
+                    <useAgent>true</useAgent>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.sonatype.central</groupId>
