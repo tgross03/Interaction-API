@@ -31,7 +31,7 @@ jobs:
         run: mvn -B package --file pom.xml
 
       - name: Publish to Maven Central
-        run: mvn deploy -X -Dgpg.executable=gpg -Dgpg.passphrase=${{ secrets.GPG_PASSPHRASE }} -Dgpg.batch=true
+        run: mvn deploy -X -Dgpg.executable=gpg -Dgpg.passphrase='${{ secrets.GPG_PASSPHRASE }}' -Dgpg.batch=true
         env:
           CENTRAL_USERNAME: ${{ secrets.CENTRAL_USERNAME }}
           CENTRAL_PASSWORD: ${{ secrets.CENTRAL_TOKEN }}
