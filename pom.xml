@@ -6,7 +6,7 @@
 
     <groupId>dev.edgetom</groupId>
     <artifactId>interaction-api</artifactId>
-    <version>0.1.1</version>
+    <version>0.1.2</version>
 
     <!--  Parts of this file were taken and modified from https://github.com/SkytAsul/GlowingEntities/blob/master/pom.xml -->
 
