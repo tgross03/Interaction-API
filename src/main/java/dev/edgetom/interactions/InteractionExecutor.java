@@ -57,7 +57,7 @@ public abstract class InteractionExecutor {
     protected boolean placeable;
 
     /**
-     * The time the item should be on cooldown after the interaction.
+     * The ticks the item should be on cooldown after the interaction.
      * The cooldown is specific to the {@link org.bukkit.Material} which the
      * player uses to interact.
      */
@@ -85,7 +85,7 @@ public abstract class InteractionExecutor {
      *                           of the item to interact with.
      * @param placeable          Whether the {@link ItemStack} the player interacts with should be able to be placed.
      *                           Also affects whether block interactions (e.g. pressing buttons is possible with the item.
-     * @param cooldown           The time that the interaction should be on cooldown after the interaction. Set {@code 0} for no cooldown.
+     * @param cooldown           The ticks that the interaction should be on cooldown after the interaction. Set {@code 0} for no cooldown.
      * @param cooldownInstant    Whether the cooldown should be applied immediately after the interaction triggers.
      *                           If set to false the cooldown has to applied by using the {@link #addCooldown(Player, Material)} method
      * @param actions            The {@link Action}s that should trigger the executor.
@@ -111,7 +111,7 @@ public abstract class InteractionExecutor {
      *                           of the item to interact with.
      * @param placeable          Whether the {@link ItemStack} the player interacts with should be able to be placed.
      *                           Also affects whether block interactions (e.g. pressing buttons) is possible with the item.
-     * @param cooldown           The time that the interaction should be on cooldown after the interaction. Set {@code 0} for no cooldown.
+     * @param cooldown           The ticks that the interaction should be on cooldown after the interaction. Set {@code 0} for no cooldown.
      * @param cooldownInstant    Whether the cooldown should be applied immediately after the interaction triggers.
      *                           If set to false the cooldown has to applied by using the {@link #addCooldown(Player, Material)} method
      * @param actionClass        The {@link ActionClass} that categorizes the {@link Action}s which should trigger the executor.

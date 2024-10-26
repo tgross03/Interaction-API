@@ -56,4 +56,13 @@ public class InteractionManager {
         interactions.put(executor.getInteractionKey(), executor);
     }
 
+
+    /**
+     * Unregisters an {@link InteractionExecutor} so that it can't be called anymore.
+     * @param executor The executor to unregister.
+     */
+    public void unregisterInteraction(InteractionExecutor executor) {
+        interactions.remove(executor.getInteractionKey());
+    }
+
 }
