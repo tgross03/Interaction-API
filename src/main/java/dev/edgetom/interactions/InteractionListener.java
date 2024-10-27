@@ -45,6 +45,11 @@ public class InteractionListener implements Listener {
         if (interactionExecutor == null) return;
         if (Arrays.stream(interactionExecutor.getActions()).noneMatch(action -> action == event.getAction())) return;
 
+        if (event.getPlayer().getCooldown(event.getMaterial()) > 0) {
+            event.setCancelled(true);
+            return;
+        }
+
         interactionExecutor.execute(event, event.getPlayer());
 
         if (interactionExecutor.getCooldown() > 0 && interactionExecutor.isCooldownInstant())
