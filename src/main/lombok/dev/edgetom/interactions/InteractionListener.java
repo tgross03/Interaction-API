@@ -1,5 +1,6 @@
 package dev.edgetom.interactions;
 
+import dev.edgetom.interactions.utils.HoldDownInteraction;
 import lombok.AllArgsConstructor;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -50,13 +51,37 @@ public class InteractionListener implements Listener {
             return;
         }
 
-        interactionExecutor.execute(event, event.getPlayer());
+        if (!interactionExecutor.isPlaceable())
+            event.setCancelled(true);
+
+        if (interactionExecutor instanceof HoldDownInteractionExecutor holdDownInteractionExecutor) {
+
+            HoldDownInteraction holdDownInteraction = interactionManager.getHoldDownInteractions().get(event.getPlayer());
+
+            if (holdDownInteraction == null) {
+                new HoldDownInteraction(holdDownInteractionExecutor, event.getPlayer());
+
+            } else if (holdDownInteraction.getInteractionExecutor().equals(holdDownInteractionExecutor)) {
+
+                if (!holdDownInteraction.onClick()) {
+                    new HoldDownInteraction(holdDownInteractionExecutor, event.getPlayer());
+                    return;
+                }
+
+                if (holdDownInteraction.isFinished()) {
+                    holdDownInteractionExecutor.execute(event, event.getPlayer());
+                    if (holdDownInteractionExecutor.getCooldown() > 0 && holdDownInteractionExecutor.isCooldownInstant())
+                        holdDownInteractionExecutor.addCooldown(event.getPlayer(), event.getItem().getType());
+                    holdDownInteraction.cancel(false);
+                }
+
+            }
+
+        } else
+            interactionExecutor.execute(event, event.getPlayer());
 
         if (interactionExecutor.getCooldown() > 0 && interactionExecutor.isCooldownInstant())
             interactionExecutor.addCooldown(event.getPlayer(), event.getItem().getType());
-
-        if (!interactionExecutor.isPlaceable())
-            event.setCancelled(true);
 
     }
 

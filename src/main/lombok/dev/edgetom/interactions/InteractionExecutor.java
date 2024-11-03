@@ -162,6 +162,15 @@ public abstract class InteractionExecutor {
     public abstract void execute(PlayerInteractEvent event, Player player);
 
     /**
+     * An optional method which can be overwritten to react to the interaction being called while on cooldown (not implemented by default).
+     *
+     * @param event  The triggered {@link PlayerInteractEvent}.
+     * @param player The player responsible for the event.
+     */
+    public void interactedOnCooldown(PlayerInteractEvent event, Player player) {
+    }
+
+    /**
      * Adds the {@link #interactionKey} to the {@link org.bukkit.persistence.PersistentDataContainer}
      * of the given item.
      *
