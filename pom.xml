@@ -8,7 +8,7 @@
     <artifactId>interaction-api</artifactId>
     <version>0.1.6</version>
 
-    <!--  Parts of this file were taken and modified from https://github.com/SkytAsul/GlowingEntities/blob/master/pom.xml -->
+    <!--  Parts of this file were adapted from https://github.com/SkytAsul/GlowingEntities/blob/master/pom.xml -->
 
     <name>Interaction-API</name>
     <description>A Spigot API for managing interactions with items.</description>
@@ -32,7 +32,7 @@
     <scm>
         <connection>scm:git:git://github.com/tgross03/Interaction-API.git</connection>
         <developerConnection>scm:git:ssh://github.com:tgross03/Interaction-API.git</developerConnection>
-        <url>http://github.com/tgross03/Interaction-API/tree/main</url>
+        <url>https://github.com/tgross03/Interaction-API/tree/main</url>
     </scm>
 
     <properties>
