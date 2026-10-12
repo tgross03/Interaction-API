@@ -51,3 +51,9 @@ jobs:
           CENTRAL_USERNAME: ${{ secrets.CENTRAL_USERNAME }}
           CENTRAL_PASSWORD: ${{ secrets.CENTRAL_TOKEN }}
           GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+
+      - name: Show bundle contents on failure
+        if: failure()
+        run: |
+          ls -R target/central-publishing || true
+          unzip -l target/central-publishing/central-bundle.zip || true
