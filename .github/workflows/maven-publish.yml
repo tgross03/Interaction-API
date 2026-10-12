@@ -43,10 +43,10 @@ jobs:
           gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
 
       - name: Build with Maven
-        run: mvn -B package --file pom.xml
+        run: ./mvnw -B package --file pom.xml
 
       - name: Publish to Maven Central
-        run: mvn clean deploy -X -Dgpg.batch=true
+        run: ./mvnw clean deploy -X -Dgpg.batch=true
         env:
           CENTRAL_USERNAME: ${{ secrets.CENTRAL_USERNAME }}
           CENTRAL_PASSWORD: ${{ secrets.CENTRAL_TOKEN }}
@@ -55,5 +55,6 @@ jobs:
       - name: Show bundle contents on failure
         if: failure()
         run: |
+          ./mvnw -v
           ls -R target/central-publishing || true
           unzip -l target/central-publishing/central-bundle.zip || true
